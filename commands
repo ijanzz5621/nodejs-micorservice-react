@@ -18,3 +18,9 @@ sudo docker run -e HOST_IP=172.30.232.178 -p 4003:4003 ijanzz5621/blog-moderatio
 
 (client) npm start
 
+
+git update after changes
+-------------------------
+git add .
+git commit -a -m "remarks"
+git push
