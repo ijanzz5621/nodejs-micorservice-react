@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser =  require("body-parser");
 const axios = require("axios");
-var config = require("../config.json");
+
+// env variables
+const HOST_IP = process.env.HOST_IP;
 
 const app = express();
 app.use(bodyParser.json());
@@ -15,7 +17,7 @@ app.post("/events", async (req, res) => {
         const status = data.content.includes('orange') ? 'rejected' : 'approved';
 
         // emit to event bus
-        await axios.post(`http://${config.host_ip}:7000/events`, {
+        await axios.post(`http://${HOST_IP}:7000/events`, {
             type: 'CommentModerated',
             data: {
                 id: data.id,

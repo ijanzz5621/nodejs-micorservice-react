@@ -2,7 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const axios = require('axios');
-var config = require("../config.json");
+
+// env variables
+const HOST_IP = process.env.HOST_IP;
 
 const app = express();
 app.use(bodyParser.json());
@@ -57,7 +59,7 @@ app.listen(4002, async () => {
 
     console.log('Query Service - Getting all events from service buss data store...');
     // get all the events from the service bus data store
-    const res = await axios.get(`http://${config.host_ip}:7000/events`);
+    const res = await axios.get(`http://${HOST_IP}:7000/events`);
     for (let event of res.data) {
         console.log('Processing event:', event.type);
         handleEvent(event.type, event.data);

@@ -1,0 +1,20 @@
+
+build the docker
+----------------
+sudo docker build -t ijanzz5621/blog-posts .
+sudo docker build -t ijanzz5621/blog-query .
+sudo docker build -t ijanzz5621/blog-eventbus .
+sudo docker build -t ijanzz5621/blog-comments .
+sudo docker build -t ijanzz5621/blog-moderation .
+
+start the docker
+----------------
+
+sudo docker run -e HOST_IP=172.30.232.178 -p 4000:4000 ijanzz5621/blog-posts
+sudo docker run -e HOST_IP=172.30.232.178 -p 4002:4002 ijanzz5621/blog-query
+sudo docker run -e HOST_IP=172.30.232.178 -p 7000:7000 ijanzz5621/blog-eventbus
+sudo docker run -e HOST_IP=172.30.232.178 -p 5000:5000 ijanzz5621/blog-comments
+sudo docker run -e HOST_IP=172.30.232.178 -p 4003:4003 ijanzz5621/blog-moderation
+
+(client) npm start
+
