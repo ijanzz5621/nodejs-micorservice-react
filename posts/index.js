@@ -5,7 +5,6 @@ const cors = require('cors');
 const axios = require("axios");
 
 // env variables
-const HOST_IP = process.env.HOST_IP;
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,7 +30,7 @@ app.post("/posts", async (req, res) => {
     };
 
     // submit event
-    await axios.post(`http://${HOST_IP}:7000/events`, {
+    await axios.post(`http://blog-eventbus-clusterip-service/events`, {
        type: "PostCreated",
        data: {
            id, 

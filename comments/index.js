@@ -5,7 +5,6 @@ const cors = require('cors');
 const axios = require("axios");
 
 // env variables
-const HOST_IP = process.env.HOST_IP;
 
 const app = express();
 app.use(bodyParser.json());
@@ -33,7 +32,7 @@ app.post("/posts/:id/comments", (req, res) => {
     commentsByPostId[req.params.id] = comments;
 
     // emit event
-    axios.post(`http://${HOST_IP}:7000/events`, {
+    axios.post(`http://blog-eventbus-clusterip-service/events`, {
         type: "CommentCreated",
         data: {
            id: commentId, 
@@ -61,7 +60,7 @@ app.post(`/events`, (req, res) => {
         comment.status = status;
 
         // emit event to other services
-        axios.post(`http://${HOST_IP}:7000/events`, {
+        axios.post(`http://blog-eventbus-clusterip-service/events`, {
             type: 'CommentUpdated',
             data: {
                 id,

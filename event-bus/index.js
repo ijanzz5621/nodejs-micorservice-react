@@ -4,7 +4,6 @@ const cors = require("cors");
 const axios = require("axios");
 
 // env variables
-const HOST_IP = process.env.HOST_IP;
 
 // create the exrepss app
 const app = express();
@@ -25,9 +24,9 @@ app.post("/events", (req, res) => {
     console.log("event received!!!" + event.data);
 
     // send out the event
-    axios.post(`http://${HOST_IP}:4000/events`, event); // post service
-    axios.post(`http://${HOST_IP}:5000/events`, event); // comment service
-    axios.post(`http://${HOST_IP}:4002/events`, event)
+    axios.post(`http://blog-posts-clusterip-service/events`, event); // post service
+    axios.post(`http://blog-comments-clusterip-service/events`, event); // comment service
+    axios.post(`http://blog-query-clusterip-service/events`, event)
         .catch((err) => {
             console.log("Error connection to query service...");
         }); // query service

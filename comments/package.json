@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "HOST_IP=172.30.232.178 nodemon index.js"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
