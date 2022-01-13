@@ -13,13 +13,13 @@ app.use(cors());
 
 const posts = {};
 
-app.get("/posts", (req, res) => {
+// app.get("/posts", (req, res) => {
 
-    //return res.json({message: "Get all list of posts."});
-    res.send(posts);
-});
+//     //return res.json({message: "Get all list of posts."});
+//     res.send(posts);
+// });
 
-app.post("/posts", async (req, res) => {
+app.post("/posts/create", async (req, res) => {
 
     // random id
     const id = randomBytes(4).toString('hex');
