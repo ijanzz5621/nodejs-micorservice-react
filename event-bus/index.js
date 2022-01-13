@@ -24,13 +24,13 @@ app.post("/events", (req, res) => {
     console.log("event received!!!" + event.data);
 
     // send out the event
-    axios.post(`http://blog-posts-clusterip-service/events`, event); // post service
-    axios.post(`http://blog-comments-clusterip-service/events`, event); // comment service
-    axios.post(`http://blog-query-clusterip-service/events`, event)
+    axios.post(`http://blog-posts-clusterip-service:4000/events`, event); // post service
+    axios.post(`http://blog-comments-clusterip-service:5000/events`, event); // comment service
+    axios.post(`http://blog-query-clusterip-service:4002/events`, event)
         .catch((err) => {
             console.log("Error connection to query service...");
         }); // query service
-    axios.post(`http://${HOST_IP}:4003/events`, event); // moderation service
+    axios.post(`http://blog-moderation-clusterip-service:4003/events`, event); // moderation service
 
     res.send({status: "OK"});
 });

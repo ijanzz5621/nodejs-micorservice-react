@@ -32,7 +32,7 @@ app.post("/posts/:id/comments", (req, res) => {
     commentsByPostId[req.params.id] = comments;
 
     // emit event
-    axios.post(`http://blog-eventbus-clusterip-service/events`, {
+    axios.post(`http://blog-eventbus-clusterip-service:7000/events`, {
         type: "CommentCreated",
         data: {
            id: commentId, 
@@ -60,7 +60,7 @@ app.post(`/events`, (req, res) => {
         comment.status = status;
 
         // emit event to other services
-        axios.post(`http://blog-eventbus-clusterip-service/events`, {
+        axios.post(`http://blog-eventbus-clusterip-service:7000/events`, {
             type: 'CommentUpdated',
             data: {
                 id,

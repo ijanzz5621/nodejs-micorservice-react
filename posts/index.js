@@ -30,7 +30,7 @@ app.post("/posts", async (req, res) => {
     };
 
     // submit event
-    await axios.post(`http://blog-eventbus-clusterip-service/events`, {
+    await axios.post(`http://blog-eventbus-clusterip-service:7000/events`, {
        type: "PostCreated",
        data: {
            id, 

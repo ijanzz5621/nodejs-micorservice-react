@@ -58,7 +58,7 @@ app.listen(4002, async () => {
 
     console.log('Query Service - Getting all events from service buss data store...');
     // get all the events from the service bus data store
-    const res = await axios.get(`http://blog-eventbus-clusterip-service/events`);
+    const res = await axios.get(`http://blog-eventbus-clusterip-service:7000/events`);
     for (let event of res.data) {
         console.log('Processing event:', event.type);
         handleEvent(event.type, event.data);
